@@ -53,14 +53,11 @@ class App : Application() {
     })
 
     override fun start(primaryStage: Stage) {
-        // Initializing the StackPane class
         val root = Pane()
 
         btn.setOnAction { isRunning = !isRunning }
-        // Adding all the nodes to the FlowPane
         root.children.add(logArea)
         root.children.add(btn)
-        //Creating a scene object
         val scene = Scene(root, 600.0, 360.0)
         logArea.layoutX = 9.0
         logArea.layoutY = 14.0
@@ -72,12 +69,7 @@ class App : Application() {
         primaryStage.isResizable = false
         primaryStage.title = "frpc_gui v0.1"
         primaryStage.scene = scene
-        // show the window(primaryStage)
-
-
         val tray = java.awt.SystemTray.getSystemTray()
-
-//        val resource: URL = this.javaClass.classLoader.getResource("pivotal-tracker-fluid-icon-2013.png")
         val image = ImageIO.read(this.javaClass.classLoader.getResource("pivotal-tracker-fluid-icon-2013.png"))
         val trayIcon = TrayIcon(image, "WTF")
         trayIcon.isImageAutoSize = true
@@ -89,7 +81,6 @@ class App : Application() {
                     primaryStage.hide()
                 } else {
                     primaryStage.show()
-//                    primaryStage.
                     primaryStage.toFront()
                 }
             })
@@ -99,16 +90,6 @@ class App : Application() {
         primaryStage.initStyle(StageStyle.UTILITY);
 
         primaryStage.show()
-
-//        primaryStage.iconifiedProperty().addListener({ observableValue, t1, t2 ->
-//            if (t2) {
-//                //最小化
-//                    primaryStage.hide()
-//            }else{
-//                //最小化
-//                    primaryStage.show()
-//            }
-//        });
 
         primaryStage.onCloseRequest = EventHandler {
             Platform.exit()
@@ -150,7 +131,6 @@ class App : Application() {
     }
 
     companion object {
-
         @JvmStatic
         fun main(args: Array<String>) {
             launch(App::class.java, *args)
